@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata: {name: tianshu-quota, namespace: tianshu-attack}
+spec:
+  hard:
+    requests.cpu: "64"
+    requests.memory: 256Gi
+    limits.cpu: "128"
+    limits.memory: 500Gi
+    pods: "60"
+    persistentvolumeclaims: "8"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: {name: tianshu-platform-hpa, namespace: tianshu-attack}
+spec:
+  scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: tianshu-platform}
+  minReplicas: 1
+  maxReplicas: 1
+  metrics:
+    - type: Resource
+      resource: {name: cpu, target: {type: Utilization, averageUtilization: 70}}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'">
+<meta name="referrer" content="no-referrer">
+<title>登录 · 天枢大模型内容安全攻防平台</title>
+<link rel="stylesheet" href="/assets/app.css">
+<link rel="stylesheet" href="/assets/login.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+<body class="auth-body">
+<div class="auth-wrap">
+
+  <aside class="auth-brand">
+    <div class="auth-brand-top">
+      <div class="auth-logo" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round">
+          <path d="M12 2.6 20 6v6.1c0 5-3.4 8.4-8 9.3-4.6-.9-8-4.3-8-9.3V6l8-3.4Z"/>
+          <path d="M8.6 12.1l2.3 2.3 4.5-4.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="auth-name">天枢</div>
+        <div class="auth-sub">内容安全测评</div>
+      </div>
+    </div>
+
+    <div class="auth-hero">
+      <h1>大模型内容安全<br>攻防与评测平台</h1>
+      <p>生成攻击样本、组织红蓝对抗、评估模型与防护插件，覆盖建设方案 167 项需求。</p>
+      <ul class="auth-points">
+        <li><span class="dot"></span>11 类编码器与多轮诱导攻击编排</li>
+        <li><span class="dot"></span>五维评估模型与真实模型接入（DeepSeek 等）</li>
+        <li><span class="dot"></span>角色分权、操作审计、会话与登录安全</li>
+      </ul>
+    </div>
+
+    <div class="auth-brand-foot">
+      <span id="auth-version">v1.0.16</span>
+      <span class="sep">·</span>
+      <span id="auth-health">安全检查中…</span>
+    </div>
+  </aside>
+
+  <main class="auth-main">
+    <div class="auth-card" id="auth-card">
+      <header class="auth-card-head">
+        <h2 id="auth-title">登录控制台</h2>
+        <p id="auth-desc">使用平台账号登录，账号由管理员分配</p>
+      </header>
+
+      <form id="login-form" autocomplete="on" novalidate>
+        <div class="field">
+          <label for="account">账号</label>
+          <div class="input-wrap">
+            <svg class="input-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.4"/><path d="M4.8 20c.8-3.6 3.7-5.4 7.2-5.4s6.4 1.8 7.2 5.4" stroke-linecap="round"/></svg>
+            <input id="account" name="account" type="text" autocomplete="username" placeholder="请输入账号" spellcheck="false" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password">密码</label>
+          <div class="input-wrap">
+            <svg class="input-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4.5" y="10" width="15" height="10" rx="2.4"/><path d="M8.2 10V7.6a3.8 3.8 0 0 1 7.6 0V10" stroke-linecap="round"/></svg>
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="请输入密码" required>
+            <button type="button" class="pw-toggle" id="pw-toggle" aria-label="显示密码" title="显示/隐藏密码">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2.6 12S6 5.8 12 5.8 21.4 12 21.4 12 18 18.2 12 18.2 2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="auth-row">
+          <label class="check"><input type="checkbox" id="remember"> <span>7 天内免登录</span></label>
+          <span class="auth-hint" id="caps-hint" hidden>大写锁定已开启</span>
+        </div>
+
+        <div class="auth-alert" id="auth-alert" role="alert" hidden></div>
+
+        <button class="btn-primary" id="login-btn" type="submit">
+          <span class="btn-label">登 录</span>
+          <span class="btn-spin" hidden></span>
+        </button>
+      </form>
+
+      <form id="pwd-form" autocomplete="off" novalidate hidden>
+        <div class="auth-notice" id="pwd-notice">
+          首次登录或密码已被重置，请先设置新密码后再进入控制台。
+        </div>
+        <div class="field">
+          <label for="old-password">当前密码</label>
+          <div class="input-wrap">
+            <input id="old-password" type="password" autocomplete="current-password" placeholder="请输入当前密码" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="new-password">新密码</label>
+          <div class="input-wrap">
+            <input id="new-password" type="password" autocomplete="new-password" placeholder="至少 8 位，含大小写/数字/符号中 3 类" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="new-password2">确认新密码</label>
+          <div class="input-wrap">
+            <input id="new-password2" type="password" autocomplete="new-password" placeholder="请再次输入新密码" required>
+          </div>
+        </div>
+        <div class="pwd-meter" id="pwd-meter" hidden>
+          <div class="pwd-bars"><i></i><i></i><i></i><i></i></div>
+          <span id="pwd-meter-text">强度：弱</span>
+        </div>
+        <div class="auth-alert" id="pwd-alert" role="alert" hidden></div>
+        <button class="btn-primary" id="pwd-btn" type="submit">
+          <span class="btn-label">保存并进入控制台</span>
+          <span class="btn-spin" hidden></span>
+        </button>
+      </form>
+
+      <footer class="auth-card-foot">
+        <span>忘记密码请联系平台管理员重置</span>
+        <span class="tiny dim" id="auth-foot-ip">会话 8 小时 · 连续 5 次失败锁定</span>
+      </footer>
+    </div>
+
+    <p class="auth-copy">© 2026 天枢安全 · 大模型内容安全攻防平台</p>
+  </main>
+</div>
+<script src="/assets/login.js"></script>
+</body>
+</html>

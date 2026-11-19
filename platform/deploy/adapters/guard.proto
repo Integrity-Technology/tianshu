@@ -1,0 +1,28 @@
+// 第三方内容安全防护工具 gRPC 对接样例（R-3.8.4-05）
+// 生成客户端：python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. guard.proto
+syntax = "proto3";
+package guard.v1;
+
+service ContentGuard {
+  // 输入侧检测：Prompt 注入 / 敏感指令 / 上下文污染
+  rpc CheckInput (CheckRequest) returns (CheckReply);
+  // 输出侧检测：合规审核 / 幻觉标记 / 信息泄露阻断
+  rpc CheckOutput (CheckRequest) returns (CheckReply);
+}
+
+message CheckRequest {
+  string request_id = 1;
+  string tenant_id = 2;
+  string text = 3;
+  string stage = 4;          // input | output
+  repeated string policies = 5;
+}
+
+message CheckReply {
+  string request_id = 1;
+  bool blocked = 2;
+  string risk_level = 3;     // high | medium | low | none
+  repeated string labels = 4;
+  double latency_ms = 5;
+  string vendor = 6;
+}

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tianshu-attack
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    tianshu.io/tenant: T-1001

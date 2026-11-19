@@ -1,0 +1,49 @@
+# 天枢平台 · Docker Compose 单机部署
+# 使用：
+#   cp .env.example .env && vi .env          # 修改管理员口令、Cookie Secure 等
+#   docker compose up -d --build
+#   docker compose logs -f platform
+#   curl http://127.0.0.1:8848/api/health
+name: tianshu-platform
+
+services:
+  platform:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: tianshu-platform:1.0.16
+    container_name: tianshu-platform
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PLATFORM_HOST: 0.0.0.0
+      PLATFORM_PORT: "8848"
+      PLATFORM_DATA: /app/data
+    ports:
+      # 仅绑定回环，公网访问统一走 Nginx / 网关 TLS 反代
+      - "127.0.0.1:8848:8848"
+    volumes:
+      - platform-data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "python", "/app/tools/ops.py", "health", "--url", "http://127.0.0.1:8848"]
+      interval: 30s
+      timeout: 5s
+      start_period: 25s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
+
+volumes:
+  platform-data:
+    name: tianshu-platform-data

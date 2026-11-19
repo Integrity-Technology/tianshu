@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-11-12",
+  "total": 4249,
+  "libraries": [
+    {
+      "name": "智能体工具注入样本库",
+      "count": 1066
+    },
+    {
+      "name": "越狱与有害请求样本库",
+      "count": 967
+    },
+    {
+      "name": "中文合规与责任样本库",
+      "count": 660
+    },
+    {
+      "name": "内容安全拒答样本库",
+      "count": 642
+    },
+    {
+      "name": "歧视与偏见样本库",
+      "count": 285
+    },
+    {
+      "name": "网络与系统安全样本库",
+      "count": 241
+    },
+    {
+      "name": "提示词注入样本库",
+      "count": 241
+    },
+    {
+      "name": "隐私与数据安全样本库",
+      "count": 142
+    },
+    {
+      "name": "误报基线样本库",
+      "count": 5
+    }
+  ],
+  "categories": [
+    {
+      "name": "隐私与个人信息",
+      "count": 922
+    },
+    {
+      "name": "违法犯罪",
+      "count": 916
+    },
+    {
+      "name": "系统与工具安全",
+      "count": 854
+    },
+    {
+      "name": "商业与知识产权",
+      "count": 684
+    },
+    {
+      "name": "虚假误导",
+      "count": 391
+    },
+    {
+      "name": "歧视偏见",
+      "count": 285
+    },
+    {
+      "name": "暴力血腥",
+      "count": 117
+    },
+    {
+      "name": "色情低俗",
+      "count": 65
+    },
+    {
+      "name": "政治敏感",
+      "count": 15
+    }
+  ],
+  "sources": [
+    {
+      "name": "AdvBench",
+      "url": "https://github.com/llm-attacks/llm-attacks",
+      "license": "MIT",
+      "count": 516
+    },
+    {
+      "name": "HarmBench",
+      "url": "https://github.com/centerforaisafety/HarmBench",
+      "license": "MIT",
+      "count": 399
+    },
+    {
+      "name": "StrongREJECT",
+      "url": "https://github.com/qxcv/strongreject",
+      "license": "MIT (custom); sourced prompts keep original terms",
+      "count": 305
+    },
+    {
+      "name": "JailbreakBench",
+      "url": "https://github.com/JailbreakBench/jailbreakbench",
+      "license": "MIT",
+      "count": 79
+    },
+    {
+      "name": "Do-Not-Answer",
+      "url": "https://huggingface.co/datasets/LibrAI/do-not-answer",
+      "license": "Apache-2.0",
+      "count": 937
+    },
+    {
+      "name": "deepset/prompt-injections",
+      "url": "https://huggingface.co/datasets/deepset/prompt-injections",
+      "license": "CC-BY-4.0",
+      "count": 203
+    },
+    {
+      "name": "InjecAgent",
+      "url": "https://github.com/uiuc-kang-lab/InjecAgent",
+      "license": "Apache-2.0",
+      "count": 1054
+    },
+    {
+      "name": "CValues",
+      "url": "https://github.com/X-PLUG/CValues",
+      "license": "Apache-2.0",
+      "count": 660
+    },
+    {
+      "name": "attack-lab",
+      "url": "C:\\tianxiang2.0\\tools\\attack-lab\\attack-sets.json",
+      "license": "内部测试集（attack-lab / attack-sets.json）",
+      "count": 96
+    }
+  ],
+  "note": "Only public benchmark prompts are bundled; no model responses or generated harmful content.",
+  "attack_lab": {
+    "added": 96,
+    "skipped_duplicate": 4,
+    "skipped_empty": 2,
+    "per_group": {
+      "L0": 11,
+      "L1": 38,
+      "L2": 13,
+      "L3": 9,
+      "L4": 12,
+      "L5": 8,
+      "P": 1,
+      "X": 4
+    }
+  }
+}

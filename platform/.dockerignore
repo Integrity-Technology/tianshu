@@ -1,0 +1,15 @@
+# 构建上下文排除：数据、缓存、测试产物、依赖
+data/
+deploy/.env
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+tools/node_modules/
+tools/package-lock.json
+tools/package.json
+audit/
+*.log
+*.db
+*.db-wal
+*.db-shm

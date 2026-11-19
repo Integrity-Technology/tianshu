@@ -1,0 +1,35 @@
+[Unit]
+Description=TianShu LLM Content Security Platform
+Documentation=file:///opt/tianshu/platform/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tianshu
+Group=tianshu
+WorkingDirectory=/opt/tianshu/platform
+EnvironmentFile=-/etc/tianshu/platform.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 server.py --host 127.0.0.1 --port 8848
+Restart=always
+RestartSec=3
+TimeoutStopSec=20
+LimitNOFILE=65535
+
+# 安全加固
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/tianshu/platform/data
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

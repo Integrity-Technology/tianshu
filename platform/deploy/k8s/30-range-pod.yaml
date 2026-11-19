@@ -1,0 +1,26 @@
+# 靶场 Pod：Kata/Firecracker 运行时 + 只读根 + 禁提权（对应 R-3.14.2-01/-03）
+apiVersion: v1
+kind: Pod
+metadata: {name: range-agent-l1, namespace: tianshu-attack, labels: {tianshu.io/pool: range}}
+spec:
+  runtimeClassName: kata-clh          # L2/L3 使用 Kata / Firecracker
+  restartPolicy: Never
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 10001
+    seccompProfile: {type: RuntimeDefault}
+  containers:
+    - name: target
+      image: registry.local/tianshu/target-agent:1.4
+      resources:
+        requests: {cpu: "500m", memory: 1Gi}
+        limits: {cpu: "2", memory: 4Gi, ephemeral-storage: 20Gi}   # cgroup 硬隔离
+      securityContext:
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+        capabilities: {drop: ["ALL"]}
+      volumeMounts:
+        - {name: work, mountPath: /work}
+  volumes:
+    - name: work
+      emptyDir: {sizeLimit: 2Gi}

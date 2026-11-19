@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tianshu-platform
+  namespace: tianshu-attack
+  labels: {app: tianshu-platform, tier: control}
+spec:
+  replicas: 1
+  selector: {matchLabels: {app: tianshu-platform}}
+  template:
+    metadata: {labels: {app: tianshu-platform, tier: control}}
+    spec:
+      serviceAccountName: tianshu-platform
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - {key: tianshu.io/pool, operator: In, values: [control]}
+      containers:
+        - name: api
+          image: registry.local/tianshu/platform:1.0.16
+          args: ["python", "server.py", "--port", "8848", "--host", "0.0.0.0"]
+          ports: [{containerPort: 8848, name: http}]
+          resources:
+            requests: {cpu: "2", memory: 4Gi}
+            limits: {cpu: "4", memory: 8Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: ["ALL"]}
+          readinessProbe: {httpGet: {path: /, port: 8848}, initialDelaySeconds: 5, periodSeconds: 10}
+          livenessProbe: {httpGet: {path: /, port: 8848}, initialDelaySeconds: 20, periodSeconds: 20}
+          volumeMounts:
+            - {name: data, mountPath: /app/data}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - name: data
+          persistentVolumeClaim: {claimName: tianshu-data}
+        - name: tmp
+          emptyDir: {sizeLimit: 2Gi}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: tianshu-platform, namespace: tianshu-attack}
+spec:
+  selector: {app: tianshu-platform}
+  ports: [{port: 8848, targetPort: http, name: http}]
