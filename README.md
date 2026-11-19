@@ -2,7 +2,7 @@
 
 <img src="figs/banner1.svg" width="100%" alt="天枢 banner" />
 
-<p> <img src="figs/logo.png" width="180" alt="天枢 Logo" /> </p> <h1>天枢 · 大模型内容安全攻防平台</h1> <p> <img src="figs/title.svg" alt="Typing SVG" /> 
+<p> <img src="figs/logo.png" width="180" alt="天枢 Logo" /> </p> <h1>天枢 · 大模型内容安全攻防平台</h1> <p> <img src="figs/title1.svg" alt="Typing SVG" /> 
 </p> <p> <img src="https://img.shields.io/badge/version-v1.0.16-0A84FF?style=for-the-badge&logo=semanticrelease&logoColor=white" alt="version" /> <img src="https://img.shields.io/badge/license-NCSL%201.0-F5A623?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="license" /> <img src="https://img.shields.io/badge/需求覆盖-167%20项-34C759?style=for-the-badge" alt="requirements" /> <img src="https://img.shields.io/badge/功能页面-15%20个-AF52DE?style=for-the-badge" alt="pages" /> </p> <p> <img src="https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows&logoColor=white" alt="windows" /> <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="linux" /> <img src="https://img.shields.io/badge/Docker%20Compose-2496ED?style=flat-square&logo=docker&logoColor=white" alt="docker" /> <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white" alt="k8s" /> <img src="https://img.shields.io/badge/Nginx%20TLS-009639?style=flat-square&logo=nginx&logoColor=white" alt="nginx" /> </p> <p> <b> <a href="#-快速开始">快速开始</a> · <a href="#️-功能预览">功能预览</a> · <a href="#-核心能力">核心能力</a> · <a href="#-部署方式">部署方式</a> · <a href="#-文档">文档</a> · <a href="#-许可证与使用限制">许可证</a> </b> </p> <!-- TODO: 替换为平台主界面截图（建议 1600×900，PNG/WebP，或录一段 GIF 演示） --> <p> 
 
 <img src="figs/screenshots/hero-dashboard.png" width="92%" alt="天枢控制台总览" /> </p> </div>
@@ -66,19 +66,23 @@ docker compose up -d --build
 ```
 
 </details>
-启动完成后访问 👉 http://127.0.0.1:8848
 
-📦 部署方式
-方式	适用场景	入口
-🪟 Windows	本地体验、小规模试用	platform/deploy/start.bat
-🐧 Linux / systemd	单机生产部署	platform/deploy/start.sh + systemd
-🐳 Docker Compose	快速交付、环境一致	platform/deploy/docker-compose.yml
-☸️ Kubernetes	集群化部署	platform/deploy/ 下 K8s 清单
-
-全路径部署细节（含 Nginx TLS、环境变量、备份恢复、升级回滚、监控巡检与 FAQ）见《部署文档》。
-
-📂 目录结构
-text
+启动完成后访问：[http://127.0.0.1:8848](http://127.0.0.1:8848)
+ 
+## 📦 部署方式
+ 
+| 方式 | 适用场景 | 入口 |
+| :-- | :-- | :-- |
+| 🪟 Windows | 本地体验、小规模试用 | `platform/deploy/start.bat` |
+| 🐧 Linux / systemd | 单机生产部署 | `platform/deploy/start.sh` + systemd |
+| 🐳 Docker Compose | 快速交付、环境一致 | `platform/deploy/docker-compose.yml` |
+| ☸️ Kubernetes | 集群化部署 | `platform/deploy/` 下 K8s 清单 |
+ 
+> 全路径部署细节（含 Nginx TLS、环境变量、备份恢复、升级回滚、监控巡检与 FAQ）见《部署文档》。
+ 
+## 📂 目录结构
+ 
+```text
 tianshu-v1.0.16/
 ├─ 部署文档.md / 部署文档.docx   部署与运维手册（先读这个）
 ├─ 操作说明.md / 操作说明.docx   平台操作与使用方法
@@ -88,17 +92,24 @@ tianshu-v1.0.16/
 ├─ MANIFEST.txt                  文件清单（路径、大小、SHA256）
 ├─ SHA256SUMS.txt                文件校验清单
 └─ platform/                     平台程序（服务、前端、部署资产、ops.py）
-🔐 完整性校验
-bash
+```
+ 
+### 🔐 完整性校验
+ 
+```bash
 sha256sum -c SHA256SUMS.txt
-📚 文档
-文档	说明
-📘 部署文档 · docx	Windows、Linux systemd、Docker Compose、K8s 全路径部署；含 Nginx TLS、环境变量、备份恢复、升级回滚、监控巡检与 FAQ
-📗 操作说明 · docx	登录、15 个功能页面的操作方法与典型场景
-📙 platform/README.md	平台功能、页面、接口与实现说明
-📕 platform/deploy/README.md	部署资产速查与 K8s 清单说明
-📝 CHANGELOG.md	版本变更记录
-📜 许可证与使用限制
+```
+ 
+## 📚 文档
+ 
+| 文档 | 说明 |
+| :-- | :-- |
+| 📘 [部署文档](部署文档.md) · [docx](部署文档.docx) | Windows、Linux systemd、Docker Compose、K8s 全路径部署；含 Nginx TLS、环境变量、备份恢复、升级回滚、监控巡检与 FAQ |
+| 📗 [操作说明](操作说明.md) · [docx](操作说明.docx) | 登录、15 个功能页面的操作方法与典型场景 |
+| 📝 [CHANGELOG.md](CHANGELOG.md) | 版本变更记录 |
+ 
+
+---
 
 本项目采用自定义非商业使用许可证（Non-Commercial Software License，NCSL 1.0）。 完整条款请参阅项目根目录下的 LICENSE 文件。
 
