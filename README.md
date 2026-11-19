@@ -13,28 +13,24 @@
 
 天枢（Tianshu） 是一套面向大模型的内容安全攻防平台：以"攻击验证 → 评测量化 → 防护加固 → 审计溯源"为主线， 帮助团队在模型上线前发现风险、上线后持续守护，并让每一次安全决策都有据可查。
 
-🎯 攻防一体：同一平台内完成风险探测与策略验证，形成可闭环的红蓝对抗流程；
-📊 结果可度量：评测结果结构化沉淀，可复盘、可对比、可追踪趋势；
-🧩 开箱即用：自带 Web 控制台，提供 15 个功能页面，一条命令即可启动；
-🚀 多形态部署：Windows / Linux systemd / Docker Compose / Kubernetes 全路径覆盖；
-🛡️ 运维友好：内置 ops.py 运维工具，配套备份恢复、升级回滚、监控巡检手册；
-📋 需求可追溯：167 条需求覆盖数据源（reqs.py）随包交付。
+- 🎯 攻防一体：同一平台内完成风险探测与策略验证，形成可闭环的红蓝对抗流程；
+- 📊 结果可度量：评测结果结构化沉淀，可复盘、可对比、可追踪趋势；
+- 🧩 开箱即用：自带 Web 控制台，提供 15 个功能页面，一条命令即可启动；
+- 🚀 多形态部署：Windows / Linux systemd / Docker Compose / Kubernetes 全路径覆盖；
+- 🛡️ 运维友好：内置 ops.py 运维工具，配套备份恢复、升级回滚、监控巡检手册；
+- 📋 需求可追溯：167 条需求覆盖数据源（reqs.py）随包交付。
+
 <!-- TODO: 请按实际产品能力核对并调整上面的描述 -->
 🖼️ 功能预览
-<!-- TODO: 以下截图均为占位，请替换为真实截图（统一尺寸，建议 1280×720；深色主题观感更佳） --> <table> <tr> <td width="50%" align="center"> <img src="figs/screenshots/hero-dashboard.png" alt="总览仪表盘" /> <br /> <b>📈 安全态势总览</b> <br /> <sub>风险趋势、任务进度、关键指标一屏掌握</sub> </td> <td width="50%" align="center"> <img src="figs/screenshots/attack.png" alt="攻击测试" /> <br /> <b>⚔️ 攻击测试</b> <br /> <sub>构造与批量投放对抗样本，探测模型薄弱点</sub> </td> </tr> <tr> <td width="50%" align="center"> <img src="figs/screenshots/defense.png" alt="防护策略" /> <br /> <b>🛡️ 防护策略</b> <br /> <sub>策略编排与效果验证，快速迭代防护规则</sub> </td> <td width="50%" align="center"> <img src="figs/screenshots/evaluation.png" alt="评测报告" /> <br /> <b>🧪 评测与报告</b> <br /> <sub>多维度结果对比，一键生成可交付报告</sub> </td> </tr> <tr> <td width="50%" align="center"> <img src="figs/screenshots/agents.png" alt="攻击智能体" /> <br /> <b>🤖 攻击智能体</b> <br /> <sub>智能体自主规划攻击路径，多轮对抗探测模型风险</sub> </td> <td width="50%" align="center"> <img src="figs/screenshots/system.png" alt="系统管理" /> <br /> <b>⚙️ 系统管理</b> <br /> <sub>账号、权限、配置集中管理，首次登录强制改密</sub> </td> </tr> </table> <details> <summary><b>🎬 点击查看更多截图 / 演示动图</b></summary> <div align="center"> <!-- TODO: 放一张 GIF 演示完整操作流程，效果最炫 --> <p> <img src="figs/screenshots/demo.gif" width="88%" alt="操作演示" /> </p> <p> <img src="figs/screenshots/login.png" width="44%" alt="登录页" /> <img src="figs/screenshots/smaples.png" width="44%" alt="更多页面 1" /> </p> </div> </details>
+<table> <tr> <td width="50%" align="center"> <img src="figs/screenshots/hero-dashboard.png" alt="总览仪表盘" /> <br /> <b>📈 安全态势总览</b> <br /> <sub>风险趋势、任务进度、关键指标一屏掌握</sub> </td> <td width="50%" align="center"> <img src="figs/screenshots/attack.png" alt="攻击测试" /> <br /> <b>⚔️ 攻击测试</b> <br /> <sub>构造与批量投放对抗样本，探测模型薄弱点</sub> </td> </tr> <tr> <td width="50%" align="center"> <img src="figs/screenshots/defense.png" alt="防护策略" /> <br /> <b>🛡️ 防护策略</b> <br /> <sub>策略编排与效果验证，快速迭代防护规则</sub> </td> <td width="50%" align="center"> <img src="figs/screenshots/evaluation.png" alt="评测报告" /> <br /> <b>🧪 评测与报告</b> <br /> <sub>多维度结果对比，一键生成可交付报告</sub> </td> </tr> <tr> <td width="50%" align="center"> <img src="figs/screenshots/agents.png" alt="攻击智能体" /> <br /> <b>🤖 攻击智能体</b> <br /> <sub>智能体自主规划攻击路径，多轮对抗探测模型风险</sub> </td> <td width="50%" align="center"> <img src="figs/screenshots/system.png" alt="系统管理" /> <br /> <b>⚙️ 系统管理</b> <br /> <sub>账号、权限、配置集中管理，首次登录强制改密</sub> </td> </tr> </table> <details> <summary><b>🎬 点击查看更多截图 / 演示动图</b></summary> <div align="center"> <!-- TODO: 放一张 GIF 演示完整操作流程，效果最炫 -->  <p> <img src="figs/screenshots/login.png" width="44%" alt="登录页" /> <img src="figs/screenshots/samples.png" width="44%" alt="更多页面 1" /> </p> </div> </details>
 🧬 核心能力
-<table> <tr> <td width="25%" valign="top"> <h3>⚔️ 攻</h3> 对抗样本构造与批量投放，模拟真实攻击手法，主动暴露内容安全风险。 </td> <td width="25%" valign="top"> <h3>🧪 评</h3> 标准化评测流程与多维度指标，让"安不安全"从感觉变成数字。 </td> <td width="25%" valign="top"> <h3>🛡️ 防</h3> 可配置的防护策略与效果回归验证，攻击发现的问题可以直接转化为防护规则。 </td> <td width="25%" valign="top"> <h3>🔍 审</h3> 全程操作留痕与事件溯源，支撑合规审查与复盘改进。 </td> </tr> </table> <!-- TODO: 若有真实架构，请将下面这张概念图替换为实际架构图 -->
-发现风险
-回归验证
-⚔️ 攻击样本
-大模型 / 被测目标
-🧪 内容安全评测
-🛡️ 防护策略
-📄 评测报告
-🔍 审计日志
-🚀 快速开始
+<table> <tr> <td width="25%" valign="top"> <h3>⚔️ 攻</h3> 对抗样本构造与批量投放，模拟真实攻击手法，主动暴露内容安全风险。 </td> <td width="25%" valign="top"> <h3>🧪 评</h3> 标准化评测流程与多维度指标，让"安不安全"从感觉变成数字。 </td> <td width="25%" valign="top"> <h3>🛡️ 防</h3> 可配置的防护策略与效果回归验证，攻击发现的问题可以直接转化为防护规则。 </td> <td width="25%" valign="top"> <h3>🔍 审</h3> 全程操作留痕与事件溯源，支撑合规审查与复盘改进。 </td> </tr> </table> 
 
-[!WARNING] 默认管理员账号 admin / Admin@123456，首次登录必须修改口令。 生产部署前请务必阅读《部署文档》第 14 节「安全加固清单」。
+<p><img src="figs/arch.svg" width="92%" alt="天枢控制台总览" /> </p>
+
+
+> 默认管理员账号 admin / Admin@123456，首次登录必须修改口令。 生产部署前请务必阅读《部署文档》第 14 节「安全加固清单」。
+
 <details open>
 <summary><b>🪟 Windows</b></summary>
 
