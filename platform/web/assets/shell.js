@@ -63,7 +63,8 @@
     { group: '平台治理', items: [
       { id: 'security', label: '账号与安全', icon: 'key' },
       { id: 'admin', label: '系统管理', icon: 'admin' },
-      { id: 'reqs', label: '需求覆盖', icon: 'reqs' }
+      // 已隐藏「需求覆盖」页面菜单；如需恢复，去掉下一行行首的 // 即可
+      // { id: 'reqs', label: '需求覆盖', icon: 'reqs' }
     ]}
   ];
 
